@@ -143,13 +143,19 @@
       	$('.controls a').on('click', function(){
          if($(this).attr('id') == 'next'){
            if (Math.abs(clicks) < slidesLen - 1) {
-             clicks--;
+             if (clicks === 0)
+				clicks = -(slidesLen - 1);
+			 else 
+			    clicks--;
            } else {
              clicks = -2;
            }
          } else {
            if (clicks < 0){
-             clicks++;
+             if (clicks === -(slidesLen - 1))
+				clicks = 0;
+			 else 
+			    clicks++;
            } else {
              clicks = 3 - slidesLen; 
            }
